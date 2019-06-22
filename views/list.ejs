@@ -4,13 +4,19 @@
   <h1> <%= eCurrentDay %> </h1>
 </div>
 
-<% for( let i=0 ; i< newListItems.length ; i++) { %>
-<span><%= newListItems[i] %></span>
-<% } %>
+<div class="box">
+  <% for( let i=0 ; i< newListItems.length ; i++) { %>
+  <div class="item">
+    <input type="checkbox">
+    <p> <%= newListItems[i] %> </p>
+  </div>
+  <% } %>
 
-<form class="" action="/" method="post">
-  <input type="text" name="newItem" placeholder="Your new item here..." autocomplete="off" autofocus>
-  <button type="button" name="submit">+</button>
-</form>
+  <form class="item" action="/" method="post">
+    <input type="text" name="newItem" placeholder="Your new item here..." autocomplete="off" autofocus>
+    <button type="button" name="submit">+</button>
+  </form>
+
+</div>
 
 <%- include('partials/footer') -%>
