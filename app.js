@@ -6,6 +6,10 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
 app.use(express.static('assets'));
 
 app.get('/', function(req, res) {
@@ -17,7 +21,14 @@ app.get('/', function(req, res) {
   });
   res.render('list', {
     eCurrentDay: currentDay,
+    newListItems: items
   });
+})
+
+app.post('/', function(req, res) {
+  const itemToAdd = req.body.newItem;
+  items.push(itemToAdd);
+  res.redirect('/');
 })
 
 app.listen(process.env.PORT || 3000, function() {
