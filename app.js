@@ -4,6 +4,8 @@ const ejs = require('ejs');
 
 const app = express();
 
+const items = [];
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({

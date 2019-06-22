@@ -4,6 +4,10 @@
   <h1> <%= eCurrentDay %> </h1>
 </div>
 
+<% for( let i=0 ; i< newListItems.length ; i++) { %>
+<span><%= newListItems[i] %></span>
+<% } %>
+
 <form class="" action="/" method="post">
   <input type="text" name="newItem" placeholder="Your new item here..." autocomplete="off" autofocus>
   <button type="button" name="submit">+</button>
