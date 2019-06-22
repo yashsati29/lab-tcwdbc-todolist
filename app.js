@@ -15,7 +15,9 @@ app.get('/', function(req, res) {
     day: "numeric",
     weekday: "long",
   });
-  res.render('list');
+  res.render('list', {
+    eCurrentDay: currentDay,
+  });
 })
 
 app.listen(process.env.PORT || 3000, function() {
