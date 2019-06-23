@@ -11,6 +11,8 @@ const itemsSchema = {
   name: String
 };
 
+const Item = new mongoose.model('item', itemsSchema);
+
 const app = express();
 
 app.set('view engine', 'ejs');
