@@ -3,6 +3,10 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 
+mongoose.connect('mongodb://localhost:27017/todolistDB', {
+  useNewUrlParser: true
+});
+
 const app = express();
 
 app.set('view engine', 'ejs');
