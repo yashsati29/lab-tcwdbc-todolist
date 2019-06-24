@@ -66,6 +66,16 @@ app.post('/', function(req, res) {
 
 })
 
+app.post('/delete', function(req, res) {
+
+  Item.deleteOne({
+    _id: req.body.checkbox
+  }, function(err) {})
+
+  res.redirect('/');
+
+})
+
 app.listen(process.env.PORT || 3000, function() {
   console.log('The server has been started successfully.');
 })
