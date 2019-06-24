@@ -30,16 +30,40 @@ app.get('/', function(req, res) {
     day: "numeric",
     weekday: "long",
   });
-  res.render('list', {
-    eCurrentDay: currentDay,
-    newListItems: items
+
+  Item.find({}, function(err, foundItems) {
+    if (foundItems.length === 0) {
+
+      const defaultItem = new Item({
+        name: 'Welcome to your to do list app!'
+      });
+
+      defaultItem.save();
+
+      res.redirect('/');
+    } else {
+
+      res.render('list', {
+        eCurrentDay: currentDay,
+        newListItems: foundItems
+      });
+
+    }
+
   });
+
 })
 
 app.post('/', function(req, res) {
-  const itemToAdd = req.body.newItem;
-  items.push(itemToAdd);
+
+  const itemToAdd = new Item({
+    name: req.body.newItem
+  })
+
+  itemToAdd.save();
+
   res.redirect('/');
+
 })
 
 app.listen(process.env.PORT || 3000, function() {
